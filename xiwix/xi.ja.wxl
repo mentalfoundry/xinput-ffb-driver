@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="ja-jp" xmlns="http://schemas.microsoft.com/wix/2006/localization">
+
+  <String Id="Language" Overridable="yes">1041</String>
+  <String Id="ProductName" Overridable="yes">XInput 用フォース フィードバック ドライバ</String>
+  <String Id="ProductManufacturer" Overridable="yes">Masahiko Morii</String>
+  <String Id="PackageDescription" Overridable="yes">Force Feedback Driver for XInput</String>
+  <String Id="PackageComments" Overridable="yes">This installer database contains the logic and data required to install Force Feedback Driver for XInput.</String>
+  <String Id="PackageManufacturer" Overridable="yes">Masahiko Morii</String>
+  <String Id="FeatureCompleteTitle" Overridable="yes">XInput 用フォース フィードバック ドライバ</String>
+  <String Id="FeatureCompleteDescription" Overridable="yes">XInput 用フォース フィードバック ドライバです。</String>
+  <String Id="FeatureBinariesTitle" Overridable="yes">ドライバー ソフトウェア</String>
+  <String Id="FeatureBinariesDescription" Overridable="yes">ドライバー ソフトウェアです。</String>
+  <String Id="FeatureSettingsTitle" Overridable="yes">コントローラー用の設定</String>
+  <String Id="FeatureSettingsDescription" Overridable="yes">コントローラー用の設定です。</String>
+  <String Id="FeatureSettingTitle_045E_028E" Overridable="yes">Microsoft Xbox 360 コントローラー</String>
+  <String Id="FeatureSettingDescription_045E_028E" Overridable="yes">Microsoft Xbox 360 コントローラー用の設定です。</String>
+  <String Id="FeatureSettingTitle_045E_02A1" Overridable="yes">Microsoft Xbox 360 ワイヤレス コントローラー</String>
+  <String Id="FeatureSettingDescription_045E_02A1" Overridable="yes">Microsoft Xbox 360 ワイヤレス コントローラー用の設定です。</String>
+  <String Id="FeatureSettingTitle_0F0D_000B" Overridable="yes">HORI ステアリング コントローラー EX</String>
+  <String Id="FeatureSettingDescription_0F0D_000B" Overridable="yes">HORI ステアリング コントローラー EX 用の設定です。</String>
+  <String Id="FeatureSettingTitle_0F0D_000C" Overridable="yes">HORI ホリパッド EX TURBO ブルー</String>
+  <String Id="FeatureSettingDescription_0F0D_000C" Overridable="yes">HORI ホリパッド EX TURBO ブルー用の設定です。</String>
+  <String Id="FeatureSettingTitle_0F0D_000F" Overridable="yes">HORI フライト スティック EX</String>
+  <String Id="FeatureSettingDescription_0F0D_000F" Overridable="yes">HORI フライト スティック EX 用の設定です。</String>
+  <String Id="FeatureSettingTitle_1BAD_F501" Overridable="yes">HORI ホリパッド EX2 TURBO</String>
+  <String Id="FeatureSettingDescription_1BAD_F501" Overridable="yes">HORI ホリパッド EX2 TURBO 用の設定です。</String>
+  <String Id="FeatureSettingTitle_046D_C242" Overridable="yes">Logicool ChillStream for PC</String>
+  <String Id="FeatureSettingDescription_046D_C242" Overridable="yes">Logicool ChillStream for PC 用の設定です。</String>
+  <String Id="FeatureSettingTitle_0738_4716" Overridable="yes">Mad Catz Xbox 360 Game Pad</String>
+  <String Id="FeatureSettingDescription_0738_4716" Overridable="yes">Mad Catz Xbox 360 Game Pad 用の設定です。</String>
+  <String Id="FeatureSettingTitle_0738_4726" Overridable="yes">Mad Catz Xbox 360 Game Pad Pro</String>
+  <String Id="FeatureSettingDescription_0738_4726" Overridable="yes">Mad Catz Xbox 360 Game Pad Pro 用の設定です。</String>
+  <String Id="FeatureSettingTitle_0738_4736" Overridable="yes">Mad Catz Xbox 360 MicroCon Game Pad Pro</String>
+  <String Id="FeatureSettingDescription_0738_4736" Overridable="yes">Mad Catz Xbox 360 MicroCon Game Pad Pro 用の設定です。</String>
+  <String Id="FeatureSettingTitle_0738_CB02" Overridable="yes">Saitek Cyborg Rumble Pad for Xbox 360 / PC</String>
+  <String Id="FeatureSettingDescription_0738_CB02" Overridable="yes">Saitek Cyborg Rumble Pad for Xbox 360 / PC 用の設定です。</String>
+
+  <String Id="SetupTypeDlgCompleteButton" Overridable="yes">完全(&amp;O)</String>
+
+</WixLocalization>

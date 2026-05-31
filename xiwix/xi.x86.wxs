@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+  <Product Id="{FFB10368-5623-49AA-BD51-B321DB9625CE}"
+           Name="!(loc.ProductName)"
+           Language="!(loc.Language)"
+           Codepage="$(var.Codepage)"
+           Version="6.1.7600.16385"
+           Manufacturer="!(loc.ProductManufacturer)"
+           UpgradeCode="{FFB10368-5623-49AA-BD51-B321DB9625CE}">
+
+    <Package Id="*"
+             Platform="x86"
+             Description="!(loc.PackageDescription)"
+             Comments="!(loc.PackageComments)"
+             Manufacturer="!(loc.PackageManufacturer)"
+             InstallerVersion="200"
+             Languages="!(loc.Language)"
+             SummaryCodepage="$(var.Codepage)"
+             Compressed="yes" />
+
+    <Media Id="1" Cabinet="xi.cab" EmbedCab="yes" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLDIR" Name="Force Feedback Driver for XInput">
+
+          <!-- Binaries x86 -->
+          <Directory Id="Directory_x86" Name="x86">
+            <Component Id="Binaries_x86" Guid="*">
+              <File Id="xiffd_x86" Name="xiffd.dll" DiskId="1" Source="xiffd.dll" />
+              <RegistryKey Root="HKCR"
+                           Key="CLSID\{FFB10360-5623-49AA-BD51-B321DB9625CE}"
+                           Action="createAndRemoveOnUninstall">
+                <RegistryValue Type="string" Value="Force Feedback Driver for XInput" />
+                <RegistryValue Key="InProcServer32" Type="string" Value="[INSTALLDIR]x86\xiffd.dll" />
+                <RegistryValue Key="InProcServer32" Type="string" Name="ThreadingModel" Value="Both" />
+              </RegistryKey>
+            </Component>
+          </Directory>
+
+          <!-- Registry_045E_028E -->
+          <Component Id="Registry_045E_028E" Guid="*">
+            <RemoveRegistryKey Root="HKCU"
+                               Key="System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_045E&amp;PID_028E"
+                               Action="removeOnInstall" />
+            <RegistryKey Root="HKLM"
+                         Key="System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_045E&amp;PID_028E"
+                         Action="createAndRemoveOnUninstall">
+              <RegistryValue Key="Axes\0" Type="binary" Name="Attributes" Value="0100000001003000" />
+              <RegistryValue Key="Axes\0" Type="binary" Name="FFAttributes" Value="0A00000000010000" />
+              <RegistryValue Key="Axes\1" Type="binary" Name="Attributes" Value="0100000001003100" />
+              <RegistryValue Key="Axes\1" Type="binary" Name="FFAttributes" Value="0A00000000010000" />
+              <RegistryValue Key="OEMForceFeedback" Type="binary" Name="Attributes" Value="00000000E8030000E8030000" />
+              <RegistryValue Key="OEMForceFeedback" Type="string" Name="CLSID" Value="{FFB10360-5623-49AA-BD51-B321DB9625CE}" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C20-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Constant Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C20-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0000000001860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C21-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Ramp Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C21-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0100000002860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C22-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Square" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C22-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0200000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C23-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sine" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C23-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0300000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C24-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Triangle" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C24-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0400000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C25-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sawtooth Up" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C25-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0500000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C26-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sawtooth Down" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C26-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0600000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C27-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Spring" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C27-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0700000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C28-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Damper" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C28-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0800000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C29-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Inertia" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C29-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0900000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2A-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Friction" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2A-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0A00000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2B-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Custom Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2B-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0B00000005C80000FD030000FD03000020000000" />
+            </RegistryKey>
+          </Component>
+
+          <!-- Registry_045E_02A1 -->
+          <Component Id="Registry_045E_02A1" Guid="*">
+            <RemoveRegistryKey Root="HKCU"
+                               Key="System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_045E&amp;PID_02A1"
+                               Action="removeOnInstall" />
+            <RegistryKey Root="HKLM"
+                         Key="System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_045E&amp;PID_02A1"
+                         Action="createAndRemoveOnUninstall">
+              <RegistryValue Key="Axes\0" Type="binary" Name="Attributes" Value="0100000001003000" />
+              <RegistryValue Key="Axes\0" Type="binary" Name="FFAttributes" Value="0A00000000010000" />
+              <RegistryValue Key="Axes\1" Type="binary" Name="Attributes" Value="0100000001003100" />
+              <RegistryValue Key="Axes\1" Type="binary" Name="FFAttributes" Value="0A00000000010000" />
+              <RegistryValue Key="OEMForceFeedback" Type="binary" Name="Attributes" Value="00000000E8030000E8030000" />
+              <RegistryValue Key="OEMForceFeedback" Type="string" Name="CLSID" Value="{FFB10360-5623-49AA-BD51-B321DB9625CE}" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C20-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Constant Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C20-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0000000001860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C21-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Ramp Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C21-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0100000002860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C22-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Square" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C22-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0200000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C23-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sine" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C23-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0300000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C24-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Triangle" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C24-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0400000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C25-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sawtooth Up" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C25-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0500000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C26-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sawtooth Down" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C26-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0600000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C27-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Spring" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C27-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0700000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C28-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Damper" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C28-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0800000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C29-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Inertia" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C29-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0900000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2A-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Friction" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2A-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0A00000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2B-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Custom Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2B-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0B00000005C80000FD030000FD03000020000000" />
+            </RegistryKey>
+          </Component>
+
+          <!-- Registry_0F0D_000B -->
+          <Component Id="Registry_0F0D_000B" Guid="*">
+            <RemoveRegistryKey Root="HKCU"
+                               Key="System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_0F0D&amp;PID_000B"
+                               Action="removeOnInstall" />
+            <RegistryKey Root="HKLM"
+                         Key="System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_0F0D&amp;PID_000B"
+                         Action="createAndRemoveOnUninstall">
+              <RegistryValue Key="Axes\0" Type="binary" Name="Attributes" Value="0100000001003000" />
+              <RegistryValue Key="Axes\0" Type="binary" Name="FFAttributes" Value="0A00000000010000" />
+              <RegistryValue Key="Axes\1" Type="binary" Name="Attributes" Value="0100000001003100" />
+              <RegistryValue Key="Axes\1" Type="binary" Name="FFAttributes" Value="0A00000000010000" />
+              <RegistryValue Key="OEMForceFeedback" Type="binary" Name="Attributes" Value="00000000E8030000E8030000" />
+              <RegistryValue Key="OEMForceFeedback" Type="string" Name="CLSID" Value="{FFB10360-5623-49AA-BD51-B321DB9625CE}" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C20-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Constant Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C20-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0000000001860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C21-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Ramp Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C21-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0100000002860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C22-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Square" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C22-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0200000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C23-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sine" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C23-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0300000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C24-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Triangle" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C24-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0400000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C25-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sawtooth Up" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C25-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0500000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C26-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sawtooth Down" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C26-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0600000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C27-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Spring" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C27-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0700000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C28-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Damper" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C28-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0800000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C29-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Inertia" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C29-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0900000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2A-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Friction" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2A-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0A00000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2B-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Custom Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2B-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0B00000005C80000FD030000FD03000020000000" />
+            </RegistryKey>
+          </Component>
+
+          <!-- Registry_0F0D_000C -->
+          <Component Id="Registry_0F0D_000C" Guid="*">
+            <RemoveRegistryKey Root="HKCU"
+                               Key="System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_0F0D&amp;PID_000C"
+                               Action="removeOnInstall" />
+            <RegistryKey Root="HKLM"
+                         Key="System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_0F0D&amp;PID_000C"
+                         Action="createAndRemoveOnUninstall">
+              <RegistryValue Key="Axes\0" Type="binary" Name="Attributes" Value="0100000001003000" />
+              <RegistryValue Key="Axes\0" Type="binary" Name="FFAttributes" Value="0A00000000010000" />
+              <RegistryValue Key="Axes\1" Type="binary" Name="Attributes" Value="0100000001003100" />
+              <RegistryValue Key="Axes\1" Type="binary" Name="FFAttributes" Value="0A00000000010000" />
+              <RegistryValue Key="OEMForceFeedback" Type="binary" Name="Attributes" Value="00000000E8030000E8030000" />
+              <RegistryValue Key="OEMForceFeedback" Type="string" Name="CLSID" Value="{FFB10360-5623-49AA-BD51-B321DB9625CE}" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C20-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Constant Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C20-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0000000001860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C21-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Ramp Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C21-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0100000002860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C22-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Square" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C22-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0200000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C23-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sine" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C23-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0300000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C24-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Triangle" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C24-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0400000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C25-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sawtooth Up" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C25-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0500000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C26-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sawtooth Down" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C26-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0600000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C27-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Spring" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C27-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0700000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C28-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Damper" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C28-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0800000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C29-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Inertia" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C29-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0900000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2A-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Friction" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2A-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0A00000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2B-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Custom Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2B-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0B00000005C80000FD030000FD03000020000000" />
+            </RegistryKey>
+          </Component>
+
+          <!-- Registry_0F0D_000F -->
+          <Component Id="Registry_0F0D_000F" Guid="*">
+            <RemoveRegistryKey Root="HKCU"
+                               Key="System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_0F0D&amp;PID_000F"
+                               Action="removeOnInstall" />
+            <RegistryKey Root="HKLM"
+                         Key="System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_0F0D&amp;PID_000F"
+                         Action="createAndRemoveOnUninstall">
+              <RegistryValue Key="Axes\0" Type="binary" Name="Attributes" Value="0100000001003000" />
+              <RegistryValue Key="Axes\0" Type="binary" Name="FFAttributes" Value="0A00000000010000" />
+              <RegistryValue Key="Axes\1" Type="binary" Name="Attributes" Value="0100000001003100" />
+              <RegistryValue Key="Axes\1" Type="binary" Name="FFAttributes" Value="0A00000000010000" />
+              <RegistryValue Key="OEMForceFeedback" Type="binary" Name="Attributes" Value="00000000E8030000E8030000" />
+              <RegistryValue Key="OEMForceFeedback" Type="string" Name="CLSID" Value="{FFB10360-5623-49AA-BD51-B321DB9625CE}" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C20-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Constant Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C20-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0000000001860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C21-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Ramp Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C21-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0100000002860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C22-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Square" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C22-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0200000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C23-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sine" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C23-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0300000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C24-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Triangle" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C24-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0400000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C25-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sawtooth Up" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C25-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0500000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C26-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sawtooth Down" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C26-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0600000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C27-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Spring" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C27-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0700000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C28-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Damper" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C28-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0800000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C29-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Inertia" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C29-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0900000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2A-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Friction" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2A-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0A00000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2B-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Custom Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2B-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0B00000005C80000FD030000FD03000020000000" />
+            </RegistryKey>
+          </Component>
+
+          <!-- Registry_1BAD_F501 -->
+          <Component Id="Registry_1BAD_F501" Guid="*">
+            <RemoveRegistryKey Root="HKCU"
+                               Key="System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_1BAD&amp;PID_F501"
+                               Action="removeOnInstall" />
+            <RegistryKey Root="HKLM"
+                         Key="System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_1BAD&amp;PID_F501"
+                         Action="createAndRemoveOnUninstall">
+              <RegistryValue Key="Axes\0" Type="binary" Name="Attributes" Value="0100000001003000" />
+              <RegistryValue Key="Axes\0" Type="binary" Name="FFAttributes" Value="0A00000000010000" />
+              <RegistryValue Key="Axes\1" Type="binary" Name="Attributes" Value="0100000001003100" />
+              <RegistryValue Key="Axes\1" Type="binary" Name="FFAttributes" Value="0A00000000010000" />
+              <RegistryValue Key="OEMForceFeedback" Type="binary" Name="Attributes" Value="00000000E8030000E8030000" />
+              <RegistryValue Key="OEMForceFeedback" Type="string" Name="CLSID" Value="{FFB10360-5623-49AA-BD51-B321DB9625CE}" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C20-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Constant Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C20-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0000000001860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C21-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Ramp Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C21-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0100000002860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C22-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Square" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C22-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0200000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C23-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sine" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C23-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0300000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C24-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Triangle" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C24-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0400000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C25-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sawtooth Up" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C25-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0500000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C26-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sawtooth Down" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C26-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0600000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C27-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Spring" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C27-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0700000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C28-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Damper" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C28-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0800000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C29-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Inertia" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C29-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0900000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2A-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Friction" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2A-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0A00000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2B-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Custom Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2B-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0B00000005C80000FD030000FD03000020000000" />
+            </RegistryKey>
+          </Component>
+
+          <!-- Registry_046D_C242 -->
+          <Component Id="Registry_046D_C242" Guid="*">
+            <RemoveRegistryKey Root="HKCU"
+                               Key="System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_046D&amp;PID_C242"
+                               Action="removeOnInstall" />
+            <RegistryKey Root="HKLM"
+                         Key="System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_046D&amp;PID_C242"
+                         Action="createAndRemoveOnUninstall">
+              <RegistryValue Key="Axes\0" Type="binary" Name="Attributes" Value="0100000001003000" />
+              <RegistryValue Key="Axes\0" Type="binary" Name="FFAttributes" Value="0A00000000010000" />
+              <RegistryValue Key="Axes\1" Type="binary" Name="Attributes" Value="0100000001003100" />
+              <RegistryValue Key="Axes\1" Type="binary" Name="FFAttributes" Value="0A00000000010000" />
+              <RegistryValue Key="OEMForceFeedback" Type="binary" Name="Attributes" Value="00000000E8030000E8030000" />
+              <RegistryValue Key="OEMForceFeedback" Type="string" Name="CLSID" Value="{FFB10360-5623-49AA-BD51-B321DB9625CE}" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C20-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Constant Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C20-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0000000001860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C21-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Ramp Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C21-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0100000002860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C22-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Square" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C22-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0200000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C23-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sine" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C23-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0300000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C24-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Triangle" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C24-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0400000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C25-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sawtooth Up" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C25-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0500000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C26-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sawtooth Down" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C26-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0600000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C27-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Spring" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C27-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0700000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C28-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Damper" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C28-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0800000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C29-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Inertia" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C29-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0900000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2A-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Friction" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2A-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0A00000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2B-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Custom Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2B-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0B00000005C80000FD030000FD03000020000000" />
+            </RegistryKey>
+          </Component>
+
+          <!-- Registry_0738_4716 -->
+          <Component Id="Registry_0738_4716" Guid="*">
+            <RemoveRegistryKey Root="HKCU"
+                               Key="System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_0738&amp;PID_4716"
+                               Action="removeOnInstall" />
+            <RegistryKey Root="HKLM"
+                         Key="System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_0738&amp;PID_4716"
+                         Action="createAndRemoveOnUninstall">
+              <RegistryValue Key="Axes\0" Type="binary" Name="Attributes" Value="0100000001003000" />
+              <RegistryValue Key="Axes\0" Type="binary" Name="FFAttributes" Value="0A00000000010000" />
+              <RegistryValue Key="Axes\1" Type="binary" Name="Attributes" Value="0100000001003100" />
+              <RegistryValue Key="Axes\1" Type="binary" Name="FFAttributes" Value="0A00000000010000" />
+              <RegistryValue Key="OEMForceFeedback" Type="binary" Name="Attributes" Value="00000000E8030000E8030000" />
+              <RegistryValue Key="OEMForceFeedback" Type="string" Name="CLSID" Value="{FFB10360-5623-49AA-BD51-B321DB9625CE}" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C20-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Constant Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C20-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0000000001860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C21-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Ramp Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C21-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0100000002860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C22-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Square" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C22-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0200000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C23-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sine" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C23-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0300000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C24-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Triangle" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C24-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0400000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C25-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sawtooth Up" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C25-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0500000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C26-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sawtooth Down" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C26-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0600000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C27-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Spring" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C27-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0700000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C28-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Damper" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C28-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0800000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C29-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Inertia" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C29-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0900000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2A-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Friction" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2A-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0A00000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2B-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Custom Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2B-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0B00000005C80000FD030000FD03000020000000" />
+            </RegistryKey>
+          </Component>
+
+          <!-- Registry_0738_4726 -->
+          <Component Id="Registry_0738_4726" Guid="*">
+            <RemoveRegistryKey Root="HKCU"
+                               Key="System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_0738&amp;PID_4726"
+                               Action="removeOnInstall" />
+            <RegistryKey Root="HKLM"
+                         Key="System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_0738&amp;PID_4726"
+                         Action="createAndRemoveOnUninstall">
+              <RegistryValue Key="Axes\0" Type="binary" Name="Attributes" Value="0100000001003000" />
+              <RegistryValue Key="Axes\0" Type="binary" Name="FFAttributes" Value="0A00000000010000" />
+              <RegistryValue Key="Axes\1" Type="binary" Name="Attributes" Value="0100000001003100" />
+              <RegistryValue Key="Axes\1" Type="binary" Name="FFAttributes" Value="0A00000000010000" />
+              <RegistryValue Key="OEMForceFeedback" Type="binary" Name="Attributes" Value="00000000E8030000E8030000" />
+              <RegistryValue Key="OEMForceFeedback" Type="string" Name="CLSID" Value="{FFB10360-5623-49AA-BD51-B321DB9625CE}" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C20-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Constant Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C20-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0000000001860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C21-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Ramp Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C21-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0100000002860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C22-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Square" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C22-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0200000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C23-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sine" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C23-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0300000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C24-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Triangle" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C24-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0400000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C25-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sawtooth Up" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C25-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0500000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C26-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sawtooth Down" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C26-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0600000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C27-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Spring" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C27-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0700000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C28-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Damper" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C28-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0800000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C29-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Inertia" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C29-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0900000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2A-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Friction" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2A-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0A00000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2B-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Custom Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2B-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0B00000005C80000FD030000FD03000020000000" />
+            </RegistryKey>
+          </Component>
+
+          <!-- Registry_0738_4736 -->
+          <Component Id="Registry_0738_4736" Guid="*">
+            <RemoveRegistryKey Root="HKCU"
+                               Key="System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_0738&amp;PID_4736"
+                               Action="removeOnInstall" />
+            <RegistryKey Root="HKLM"
+                         Key="System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_0738&amp;PID_4736"
+                         Action="createAndRemoveOnUninstall">
+              <RegistryValue Key="Axes\0" Type="binary" Name="Attributes" Value="0100000001003000" />
+              <RegistryValue Key="Axes\0" Type="binary" Name="FFAttributes" Value="0A00000000010000" />
+              <RegistryValue Key="Axes\1" Type="binary" Name="Attributes" Value="0100000001003100" />
+              <RegistryValue Key="Axes\1" Type="binary" Name="FFAttributes" Value="0A00000000010000" />
+              <RegistryValue Key="OEMForceFeedback" Type="binary" Name="Attributes" Value="00000000E8030000E8030000" />
+              <RegistryValue Key="OEMForceFeedback" Type="string" Name="CLSID" Value="{FFB10360-5623-49AA-BD51-B321DB9625CE}" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C20-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Constant Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C20-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0000000001860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C21-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Ramp Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C21-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0100000002860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C22-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Square" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C22-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0200000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C23-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sine" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C23-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0300000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C24-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Triangle" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C24-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0400000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C25-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sawtooth Up" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C25-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0500000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C26-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sawtooth Down" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C26-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0600000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C27-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Spring" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C27-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0700000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C28-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Damper" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C28-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0800000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C29-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Inertia" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C29-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0900000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2A-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Friction" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2A-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0A00000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2B-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Custom Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2B-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0B00000005C80000FD030000FD03000020000000" />
+            </RegistryKey>
+          </Component>
+
+          <!-- Registry_0738_CB02 -->
+          <Component Id="Registry_0738_CB02" Guid="*">
+            <RemoveRegistryKey Root="HKCU"
+                               Key="System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_0738&amp;PID_CB02"
+                               Action="removeOnInstall" />
+            <RegistryKey Root="HKLM"
+                         Key="System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_0738&amp;PID_CB02"
+                         Action="createAndRemoveOnUninstall">
+              <RegistryValue Key="Axes\0" Type="binary" Name="Attributes" Value="0100000001003000" />
+              <RegistryValue Key="Axes\0" Type="binary" Name="FFAttributes" Value="0A00000000010000" />
+              <RegistryValue Key="Axes\1" Type="binary" Name="Attributes" Value="0100000001003100" />
+              <RegistryValue Key="Axes\1" Type="binary" Name="FFAttributes" Value="0A00000000010000" />
+              <RegistryValue Key="OEMForceFeedback" Type="binary" Name="Attributes" Value="00000000E8030000E8030000" />
+              <RegistryValue Key="OEMForceFeedback" Type="string" Name="CLSID" Value="{FFB10360-5623-49AA-BD51-B321DB9625CE}" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C20-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Constant Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C20-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0000000001860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C21-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Ramp Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C21-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0100000002860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C22-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Square" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C22-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0200000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C23-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sine" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C23-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0300000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C24-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Triangle" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C24-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0400000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C25-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sawtooth Up" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C25-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0500000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C26-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Sawtooth Down" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C26-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0600000003860000FD030000FD03000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C27-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Spring" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C27-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0700000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C28-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Damper" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C28-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0800000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C29-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Inertia" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C29-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0900000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2A-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Friction" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2A-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0A00000004C80000650300006503000020000000" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2B-8E33-11D0-9AD0-00A0C9A06E35}" Type="string" Value="Custom Force" />
+              <RegistryValue Key="OEMForceFeedback\Effects\{13541C2B-8E33-11D0-9AD0-00A0C9A06E35}" Type="binary" Name="Attributes" Value="0B00000005C80000FD030000FD03000020000000" />
+            </RegistryKey>
+          </Component>
+
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <Feature Id="Complete"
+             Title="!(loc.FeatureCompleteTitle)"
+             Description="!(loc.FeatureCompleteDescription)"
+             Display="expand"
+             Level="1"
+             Absent="disallow"
+             AllowAdvertise="no"
+             ConfigurableDirectory="INSTALLDIR">
+
+      <!-- Binaries -->
+      <Feature Id="Binaries" Title="!(loc.FeatureBinariesTitle)" Description="!(loc.FeatureBinariesDescription)" Level="1" Absent="disallow" AllowAdvertise="no">
+        <ComponentRef Id="Binaries_x86" />
+      </Feature>
+
+      <!-- Settings -->
+      <Feature Id="Settings" Title="!(loc.FeatureSettingsTitle)" Description="!(loc.FeatureSettingsDescription)" Level="1" AllowAdvertise="no">
+
+        <!-- Setting_045E_028E -->
+        <Feature Id="Setting_045E_028E" Title="!(loc.FeatureSettingTitle_045E_028E)" Description="!(loc.FeatureSettingDescription_045E_028E)" Level="1" AllowAdvertise="no">
+          <ComponentRef Id="Registry_045E_028E" />
+        </Feature>
+
+        <!-- Setting_045E_02A1 -->
+        <Feature Id="Setting_045E_02A1" Title="!(loc.FeatureSettingTitle_045E_02A1)" Description="!(loc.FeatureSettingDescription_045E_02A1)" Level="1" AllowAdvertise="no">
+          <ComponentRef Id="Registry_045E_02A1" />
+        </Feature>
+
+        <!-- Setting_0F0D_000B -->
+        <Feature Id="Setting_0F0D_000B" Title="!(loc.FeatureSettingTitle_0F0D_000B)" Description="!(loc.FeatureSettingDescription_0F0D_000B)" Level="1" AllowAdvertise="no">
+          <ComponentRef Id="Registry_0F0D_000B" />
+        </Feature>
+
+        <!-- Setting_0F0D_000C -->
+        <Feature Id="Setting_0F0D_000C" Title="!(loc.FeatureSettingTitle_0F0D_000C)" Description="!(loc.FeatureSettingDescription_0F0D_000C)" Level="1" AllowAdvertise="no">
+          <ComponentRef Id="Registry_0F0D_000C" />
+        </Feature>
+
+        <!-- Setting_0F0D_000F -->
+        <Feature Id="Setting_0F0D_000F" Title="!(loc.FeatureSettingTitle_0F0D_000F)" Description="!(loc.FeatureSettingDescription_0F0D_000F)" Level="1" AllowAdvertise="no">
+          <ComponentRef Id="Registry_0F0D_000F" />
+        </Feature>
+
+        <!-- Setting_1BAD_F501 -->
+        <Feature Id="Setting_1BAD_F501" Title="!(loc.FeatureSettingTitle_1BAD_F501)" Description="!(loc.FeatureSettingDescription_1BAD_F501)" Level="1" AllowAdvertise="no">
+          <ComponentRef Id="Registry_1BAD_F501" />
+        </Feature>
+
+        <!-- Setting_046D_C242 -->
+        <Feature Id="Setting_046D_C242" Title="!(loc.FeatureSettingTitle_046D_C242)" Description="!(loc.FeatureSettingDescription_046D_C242)" Level="1" AllowAdvertise="no">
+          <ComponentRef Id="Registry_046D_C242" />
+        </Feature>
+
+        <!-- Setting_0738_4716 -->
+        <Feature Id="Setting_0738_4716" Title="!(loc.FeatureSettingTitle_0738_4716)" Description="!(loc.FeatureSettingDescription_0738_4716)" Level="1" AllowAdvertise="no">
+          <ComponentRef Id="Registry_0738_4716" />
+        </Feature>
+
+        <!-- Setting_0738_4726 -->
+        <Feature Id="Setting_0738_4726" Title="!(loc.FeatureSettingTitle_0738_4726)" Description="!(loc.FeatureSettingDescription_0738_4726)" Level="1" AllowAdvertise="no">
+          <ComponentRef Id="Registry_0738_4726" />
+        </Feature>
+
+        <!-- Setting_0738_4736 -->
+        <Feature Id="Setting_0738_4736" Title="!(loc.FeatureSettingTitle_0738_4736)" Description="!(loc.FeatureSettingDescription_0738_4736)" Level="1" AllowAdvertise="no">
+          <ComponentRef Id="Registry_0738_4736" />
+        </Feature>
+
+        <!-- Setting_0738_CB02 -->
+        <Feature Id="Setting_0738_CB02" Title="!(loc.FeatureSettingTitle_0738_CB02)" Description="!(loc.FeatureSettingDescription_0738_CB02)" Level="1" AllowAdvertise="no">
+          <ComponentRef Id="Registry_0738_CB02" />
+        </Feature>
+
+      </Feature>
+
+    </Feature>
+
+    <UIRef Id="WixUI_MondoWithoutLicenseAgreement" />
+    <UIRef Id="WixUI_ErrorProgressText" />
+
+  </Product>
+
+  <Fragment>
+
+    <UI Id="WixUI_MondoWithoutLicenseAgreement">
+
+      <TextStyle Id="WixUI_Font_Normal" FaceName="Tahoma" Size="8" />
+      <TextStyle Id="WixUI_Font_Bigger" FaceName="Tahoma" Size="12" />
+      <TextStyle Id="WixUI_Font_Title" FaceName="Tahoma" Size="9" Bold="yes" />
+
+      <Property Id="DefaultUIFont" Value="WixUI_Font_Normal" />
+      <Property Id="WixUI_Mode" Value="Mondo" />
+
+      <DialogRef Id="ErrorDlg" />
+      <DialogRef Id="FatalError" />
+      <DialogRef Id="FilesInUse" />
+      <DialogRef Id="MsiRMFilesInUse" />
+      <DialogRef Id="PrepareDlg" />
+      <DialogRef Id="ProgressDlg" />
+      <DialogRef Id="ResumeDlg" />
+      <DialogRef Id="UserExit" />
+
+      <Publish Dialog="ExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999">1</Publish>
+
+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="SetupTypeDlg">1</Publish>
+
+      <Publish Dialog="LicenseAgreementDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg">1</Publish>
+      <Publish Dialog="LicenseAgreementDlg" Control="Next" Event="NewDialog" Value="SetupTypeDlg" Order="2">LicenseAccepted = "1"</Publish>
+
+      <Publish Dialog="SetupTypeDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg">1</Publish>
+      <Publish Dialog="SetupTypeDlg" Control="TypicalButton" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
+      <Publish Dialog="SetupTypeDlg" Control="CustomButton" Event="NewDialog" Value="CustomizeDlg">1</Publish>
+      <Publish Dialog="SetupTypeDlg" Control="CompleteButton" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
+
+      <Publish Dialog="CustomizeDlg" Control="Back" Event="NewDialog" Value="MaintenanceTypeDlg" Order="1">WixUI_InstallMode = "Change"</Publish>
+      <Publish Dialog="CustomizeDlg" Control="Back" Event="NewDialog" Value="SetupTypeDlg" Order="2">WixUI_InstallMode = "InstallCustom"</Publish>
+      <Publish Dialog="CustomizeDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
+
+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="CustomizeDlg" Order="1">WixUI_InstallMode = "InstallCustom"</Publish>
+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="SetupTypeDlg" Order="2">WixUI_InstallMode = "InstallTypical" OR WixUI_InstallMode = "InstallComplete"</Publish>
+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="CustomizeDlg" Order="3">WixUI_InstallMode = "Change"</Publish>
+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="MaintenanceTypeDlg" Order="4">WixUI_InstallMode = "Repair" OR WixUI_InstallMode = "Remove"</Publish>
+
+      <Publish Dialog="MaintenanceWelcomeDlg" Control="Next" Event="NewDialog" Value="MaintenanceTypeDlg">1</Publish>
+
+      <Publish Dialog="MaintenanceTypeDlg" Control="ChangeButton" Event="NewDialog" Value="CustomizeDlg">1</Publish>
+      <Publish Dialog="MaintenanceTypeDlg" Control="RepairButton" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
+      <Publish Dialog="MaintenanceTypeDlg" Control="RemoveButton" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
+      <Publish Dialog="MaintenanceTypeDlg" Control="Back" Event="NewDialog" Value="MaintenanceWelcomeDlg">1</Publish>
+
+    </UI>
+
+    <UIRef Id="WixUI_Common" />
+
+  </Fragment>
+
+</Wix>

@@ -1,0 +1,18 @@
+# Build outputs
+build/
+obj/
+dist/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.aps
+*.ncb
+*.sdf
+ipch/
+
+# WiX
+*.wixpdb
+*.wixobj
+.wix/

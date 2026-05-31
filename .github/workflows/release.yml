@@ -1,0 +1,82 @@
+name: Build and Release
+
+# Runs when you push a version tag, e.g. git tag v1.0.0 && git push origin v1.0.0
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Install WiX Toolset
+        run: dotnet tool install --global wix --version 7.0.0
+
+      - name: Install WiX UI extension
+        run: wix extension add WixToolset.UI.wixext
+
+      # Override PlatformToolset to v143 (VS 2022) — the vcxproj defaults to v145
+      # (VS 2026) for local builds, but GitHub runners only have v143.
+      # The source code is compatible with both.
+      - name: Build x86 DLL
+        run: >
+          msbuild xiffd.sln
+          /p:Configuration=Release
+          /p:Platform=Win32
+          /p:PlatformToolset=v143
+          /m /nologo /verbosity:minimal
+
+      - name: Build x64 DLL
+        run: >
+          msbuild xiffd.sln
+          /p:Configuration=Release
+          /p:Platform=x64
+          /p:PlatformToolset=v143
+          /m /nologo /verbosity:minimal
+
+      - name: Build installer
+        working-directory: xiwix
+        run: >
+          wix build xi.wxs
+          -ext WixToolset.UI.wixext
+          -culture en-US
+          -loc xi.en.wxl
+          -arch x64
+          -out ..\dist\xiffd-setup.msi
+
+      - name: Upload installer as release asset
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Force Feedback Driver for XInput ${{ github.ref_name }}
+          body: |
+            ## Installation
+
+            1. Download `xiffd-setup.msi`
+            2. Right-click → **Run as administrator**
+            3. In the feature tree, tick the entry matching your controller
+            4. Enable vibration in your game's settings
+
+            ## Supported controllers
+
+            - Xbox 360 (wired and wireless)
+            - Xbox One, Xbox One S, Xbox One Elite
+            - Xbox Elite Series 2
+            - Xbox Series X|S
+            - Xbox Wireless Adapter for Windows (covers all Xbox One/Series controllers connected wirelessly)
+            - Various third-party Xbox 360-compatible controllers (HORI, Mad Catz, Saitek, Logitech)
+
+            ## Notes
+
+            Original driver by Masahiko Morii. Maintained by mentalfoundry.
+          files: dist/xiffd-setup.msi

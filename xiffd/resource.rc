@@ -1,0 +1,32 @@
+// Force Feedback Driver for XInput
+
+#include <windows.h>
+
+VS_VERSION_INFO VERSIONINFO
+    FILEVERSION     1,0,1,0
+    PRODUCTVERSION  1,0,1,0
+    FILEFLAGSMASK   VS_FFI_FILEFLAGSMASK
+    FILEFLAGS       0
+    FILEOS          VOS_NT_WINDOWS32
+    FILETYPE        VFT_DLL
+    FILESUBTYPE     VFT2_UNKNOWN
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName",        "mentalfoundry"
+            VALUE "FileDescription",    "Force Feedback Driver for XInput"
+            VALUE "FileVersion",        "1.0.1.0"
+            VALUE "InternalName",       "xiffd.dll"
+            VALUE "LegalCopyright",     "Maintained by mentalfoundry. Original work by Masahiko Morii."
+            VALUE "OriginalFilename",   "xiffd.dll"
+            VALUE "ProductName",        "Force Feedback Driver for XInput"
+            VALUE "ProductVersion",     "1.0.1.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0409, 0x04B0
+    END
+END

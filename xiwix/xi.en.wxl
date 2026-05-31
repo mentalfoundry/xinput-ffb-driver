@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="en-us" xmlns="http://wixtoolset.org/schemas/v4/wxl">
+
+  <String Id="Language" Value="1033" />
+  <String Id="ProductName" Value="Force Feedback Driver for XInput" />
+  <String Id="ProductManufacturer" Value="mentalfoundry" />
+  <String Id="PackageDescription" Value="Force Feedback Driver for XInput" />
+  <String Id="PackageComments" Value="Maintained by mentalfoundry. Original work by Masahiko Morii." />
+  <String Id="PackageManufacturer" Value="mentalfoundry" />
+  <String Id="FeatureCompleteTitle" Value="Force Feedback Driver for XInput" />
+  <String Id="FeatureCompleteDescription" Value="Force Feedback Driver for XInput." />
+  <String Id="FeatureBinariesTitle" Value="Driver Software" />
+  <String Id="FeatureBinariesDescription" Value="Driver Software." />
+  <String Id="FeatureSettingsTitle" Value="Controller Settings" />
+  <String Id="FeatureSettingsDescription" Value="Controller Settings." />
+  <String Id="FeatureSettingTitle_045E_028E" Value="Microsoft Xbox 360 Controller" />
+  <String Id="FeatureSettingDescription_045E_028E" Value="Microsoft Xbox 360 Controller." />
+  <String Id="FeatureSettingTitle_045E_02A1" Value="Microsoft Xbox 360 Wireless Controller" />
+  <String Id="FeatureSettingDescription_045E_02A1" Value="Microsoft Xbox 360 Wireless Controller." />
+  <String Id="FeatureSettingTitle_0F0D_000B" Value="HORI STEERING CONTROLLER EX" />
+  <String Id="FeatureSettingDescription_0F0D_000B" Value="HORI STEERING CONTROLLER EX." />
+  <String Id="FeatureSettingTitle_0F0D_000C" Value="HORI HORIPAD EX TURBO" />
+  <String Id="FeatureSettingDescription_0F0D_000C" Value="HORI HORIPAD EX TURBO." />
+  <String Id="FeatureSettingTitle_0F0D_000F" Value="HORI FLIGHT STICK EX" />
+  <String Id="FeatureSettingDescription_0F0D_000F" Value="HORI FLIGHT STICK EX." />
+  <String Id="FeatureSettingTitle_1BAD_F501" Value="HORI HORIPAD EX2 TURBO" />
+  <String Id="FeatureSettingDescription_1BAD_F501" Value="HORI HORIPAD EX2 TURBO." />
+  <String Id="FeatureSettingTitle_046D_C242" Value="Logicool ChillStream for PC" />
+  <String Id="FeatureSettingDescription_046D_C242" Value="Logicool ChillStream for PC." />
+  <String Id="FeatureSettingTitle_0738_4716" Value="Mad Catz Xbox 360 Game Pad" />
+  <String Id="FeatureSettingDescription_0738_4716" Value="Mad Catz Xbox 360 Game Pad." />
+  <String Id="FeatureSettingTitle_0738_4726" Value="Mad Catz Xbox 360 Game Pad Pro" />
+  <String Id="FeatureSettingDescription_0738_4726" Value="Mad Catz Xbox 360 Game Pad Pro." />
+  <String Id="FeatureSettingTitle_0738_4736" Value="Mad Catz Xbox 360 MicroCon Game Pad Pro" />
+  <String Id="FeatureSettingDescription_0738_4736" Value="Mad Catz Xbox 360 MicroCon Game Pad Pro." />
+  <String Id="FeatureSettingTitle_0738_CB02" Value="Saitek Cyborg Rumble Pad for Xbox 360 / PC" />
+  <String Id="FeatureSettingDescription_0738_CB02" Value="Saitek Cyborg Rumble Pad for Xbox 360 / PC." />
+
+  <!-- Xbox Wireless Adapter -->
+  <String Id="FeatureSettingTitle_045E_02FF" Value="Xbox Wireless Adapter for Windows" />
+  <String Id="FeatureSettingDescription_045E_02FF" Value="Xbox One and Xbox Series X|S controllers connected via the Xbox Wireless Adapter for Windows (USB dongle)." />
+
+  <!-- Xbox One / Elite / Series X|S -->
+  <String Id="FeatureSettingTitle_045E_02DD" Value="Xbox One Controller" />
+  <String Id="FeatureSettingDescription_045E_02DD" Value="Xbox One Controller (model 1537, USB)." />
+  <String Id="FeatureSettingTitle_045E_02E3" Value="Xbox One Elite Controller" />
+  <String Id="FeatureSettingDescription_045E_02E3" Value="Xbox One Elite Controller (model 1698, USB)." />
+  <String Id="FeatureSettingTitle_045E_02EA" Value="Xbox One S Controller" />
+  <String Id="FeatureSettingDescription_045E_02EA" Value="Xbox One S Controller (model 1708, USB)." />
+  <String Id="FeatureSettingTitle_045E_02FD" Value="Xbox One S Controller (Bluetooth)" />
+  <String Id="FeatureSettingDescription_045E_02FD" Value="Xbox One S Controller via Bluetooth." />
+  <String Id="FeatureSettingTitle_045E_0B00" Value="Xbox Elite Series 2" />
+  <String Id="FeatureSettingDescription_045E_0B00" Value="Xbox Elite Wireless Controller Series 2 (model 1797, USB)." />
+  <String Id="FeatureSettingTitle_045E_0B05" Value="Xbox Elite Series 2 (Bluetooth)" />
+  <String Id="FeatureSettingDescription_045E_0B05" Value="Xbox Elite Wireless Controller Series 2 via Bluetooth." />
+  <String Id="FeatureSettingTitle_045E_0B12" Value="Xbox Series X|S Controller" />
+  <String Id="FeatureSettingDescription_045E_0B12" Value="Xbox Series X|S Controller (model 1914, USB)." />
+  <String Id="FeatureSettingTitle_045E_0B13" Value="Xbox Series X|S Controller (Bluetooth)" />
+  <String Id="FeatureSettingDescription_045E_0B13" Value="Xbox Series X|S Controller via Bluetooth." />
+
+</WixLocalization>

@@ -1,0 +1,9 @@
+
+;	Force Feedback Driver for XInput
+
+LIBRARY		"xiffd.dll"
+
+EXPORTS
+	DllGetClassObject	PRIVATE
+	DllCanUnloadNow		PRIVATE
+
