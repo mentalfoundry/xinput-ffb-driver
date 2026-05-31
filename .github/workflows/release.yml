@@ -24,7 +24,7 @@ jobs:
         run: dotnet tool install --global wix --version 7.0.0
 
       - name: Install WiX UI extension
-        run: wix extension add WixToolset.UI.wixext
+        run: wix extension add WixToolset.UI.wixext -acceptEula wix7
 
       # Override PlatformToolset to v143 (VS 2022) — the vcxproj defaults to v145
       # (VS 2026) for local builds, but GitHub runners only have v143.
@@ -54,6 +54,7 @@ jobs:
           -loc xi.en.wxl
           -arch x64
           -out ..\dist\xiffd-setup.msi
+          -acceptEula wix7
 
       - name: Upload installer as release asset
         uses: softprops/action-gh-release@v2
